@@ -23,10 +23,15 @@ public class Interface {
 			switch (opcao){
 			case 1:
 				ContaCorrente contaEncontrada = pesquisarContaCorrente();
-				System.out.println(contaEncontrada.toString());
+				if(contaEncontrada == null)
+					System.err.println("Nenhuma conta encontrada!\n");
+				else
+					System.out.println(contaEncontrada.toString());
 				break;
 			case 2:
+				System.out.println("Lista De Contas:\n\n");
 				listarContas();
+				System.out.println("\n\n");
 				break;
 			case 3:
 				importarContasDoArquivo();
@@ -34,7 +39,7 @@ public class Interface {
 			case 4:
 				break;
 			default:
-				System.err.println("Opção Inválida");
+				System.err.println("Opção Inválida!!\n");
 				break;
 			}
 		}while(opcao != 4);
@@ -59,8 +64,6 @@ public class Interface {
 				}
 			}
 		}while(contaEncontrada != null);
-		
-		this.scan.close();
 		
 		return null;	
 	}

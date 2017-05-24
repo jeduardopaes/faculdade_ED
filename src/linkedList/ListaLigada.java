@@ -58,7 +58,27 @@ public class ListaLigada {
 		return posicao >= 0 && posicao < this.quantidade;
 	}
 	
-	
+	public Celula getCelulaNaPosicao(int posicao){
+		
+		if (posicao > this.quantidade){
+			System.err.println("Posição não existe!");
+		}else if (posicao == this.quantidade){
+			return this.ultima;
+		}
+		
+		Celula celulaAtual = primeira;
+		
+		for(int i = 0; i <= this.quantidade; i++ ){
+			
+			celulaAtual = celulaAtual.getProxima();
+			
+			if (i == posicao){
+				break;
+			}
+		}
+		
+		return celulaAtual;
+	}
 	
 	public static void main(String[] args) {
 		
@@ -88,6 +108,10 @@ public class ListaLigada {
 		System.out.println(listaLigada.toString());
 		
 		System.out.println(listaLigada.getQuantidade());
+		
+		
+		System.out.println(listaLigada.getCelulaNaPosicao(2).toString());
+		
 	}
 
 	
