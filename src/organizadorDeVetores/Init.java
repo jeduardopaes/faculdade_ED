@@ -8,19 +8,14 @@ public class Init {
 
 	public static void main(String[] args) {
 
-		System.out.println(" ");
-		System.out.println("=========================================================== ");
-		System.out.println(" ");
-		System.out.println("Escolha: ");
-		System.out.println(" ");
+		System.out.println("\n===========================================================\n");
+		System.out.println("Escolha: \n");
 		System.out.println(" 1 - Vetor Aleatorio ");
 		System.out.println(" 2 - Vetor Invertido");
 		System.out.println(" 3 - Vetor Ordenada");
 		int escolhavetor = entradaprincipal.nextInt();
 
-		System.out.println(" ");
-		System.out.println("=========================================================== ");
-		System.out.println(" ");
+		System.out.println("\n===========================================================\n");
 		System.out.println("Tamanho do vetor: ");
 		int tamanhodovetor = entradaprincipal.nextInt();
 
@@ -28,19 +23,22 @@ public class Init {
 
 		if (escolhavetor == 1) {
 			GV.popularVetorDeFormaAleatoria();
+			System.out.println(GV);
 		} else if (escolhavetor == 2) {
 			GV.popularVetorDeFormaInvertida();
+			System.out.println(GV);
 		} else if (escolhavetor == 3) {
 			GV.popularVetorDeFormaOrdenada();
+			System.out.println(GV);
 		} else {
 			System.out.println("Porra escolha uma opção direito");
 		}
 
-		menu(GV.getVetor());
+		menu(GV);
 
 	}
 
-	public static void menu(int[] vetorDeInteiros) {
+	public static void menu(GeradorDeVetores GV) {
 
 		System.out.println(" ");
 		System.out.println("=========================================================== ");
@@ -55,16 +53,18 @@ public class Init {
 		System.out.println(" ");
 
 		if (opcaodeordenacao == 1) {
-			OrganizadorQuickSort.OrganizarVetor(vetorDeInteiros);
+			OrganizadorQuickSort.OrganizarVetor(GV.getVetor());
+			System.out.println(GV);
 		} else if (opcaodeordenacao == 2) {
-			OrganizadorSelectionSort.OrganizarVetorSelectionSort(vetorDeInteiros);
+			OrganizadorSelectionSort.OrganizarVetorSelectionSort(GV.getVetor());
+			System.out.println(GV);
 		} else if (opcaodeordenacao == 3) {
 			main(null);
 		} else {
 			System.out.println("Porra escolha uma opção direito.");
 		}
 
-		menu(vetorDeInteiros);
+		menu(GV);
 
 	}
 
