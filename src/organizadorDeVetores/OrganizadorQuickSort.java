@@ -4,13 +4,29 @@ public class OrganizadorQuickSort {
 	
 	private int array[];
     private int length;
+    private long tempoDeExecucao;
+    private int contadorDeComparacao;
+    private int contadorDeTrocas;
     
     public static void OrganizarVetor(int[] vetorDeNumerosInteiros){
     	OrganizadorQuickSort OQS = new OrganizadorQuickSort();
+    	OQS.tempoDeExecucao = System.currentTimeMillis();
     	
     	OQS.organizarUsandoQuickSort(vetorDeNumerosInteiros);
+    	long tempoFinal = System.currentTimeMillis(); 
+    	
+    	OQS.tempoDeExecucao = tempoFinal - OQS.tempoDeExecucao;
+    	
+		System.out.println("O Tempo para organizar o vetor foi de: " + OQS.tempoDeExecucao + " milisegundos.\n"
+				+ "A quantidade de trocas foi de: " + OQS.contadorDeTrocas + " trocas.\n"
+				+ "A quantidade de comparações foi de: " + OQS.contadorDeComparacao + " comparações.");
     	
     }
+    
+    public OrganizadorQuickSort() {
+		this.contadorDeComparacao = 0;
+		this.contadorDeTrocas = 0;
+	}
     
     public void organizarUsandoQuickSort(int[] inputArr) {
          
@@ -42,6 +58,7 @@ public class OrganizadorQuickSort {
             while (array[j] > pivot) {
                 j--;
             }
+            contadorDeComparacao++;
             if (i <= j) {
                 mudaOsNumeros(i, j);
                 //move index to next position on both sides
@@ -60,6 +77,7 @@ public class OrganizadorQuickSort {
         int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
+        contadorDeTrocas++;
     }
 	
 }
