@@ -54,27 +54,32 @@ public class OrganizadorQuickSort {
              */
             while (array[i] < pivot) {
                 i++;
+                contadorDeComparacao++;
             }
             while (array[j] > pivot) {
                 j--;
+                contadorDeComparacao++;
             }
-            contadorDeComparacao++;
+            
             if (i <= j) {
                 mudaOsNumeros(i, j);
                 //move index to next position on both sides
                 i++;
                 j--;
             }
+            
         }
         // call quickSort() method recursively
-        if (lowerIndex < j)
+        if (lowerIndex < j){
             quickSort(lowerIndex, j);
-        if (i < higherIndex)
+        }
+        if (i < higherIndex){
             quickSort(i, higherIndex);
+        }
     }
  
     private void mudaOsNumeros(int i, int j) {
-        int temp = array[i];
+    	int temp = array[i];
         array[i] = array[j];
         array[j] = temp;
         contadorDeTrocas++;
